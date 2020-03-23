@@ -1,0 +1,3 @@
+config:
+  editor: /usr/bin/nano
+files: {}

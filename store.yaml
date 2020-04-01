@@ -5,7 +5,11 @@ files:
     path: /home/sean/.config/fish/config.fish
   i3:
     path: /home/sean/.i3/config
+  lock:
+    path: /home/sean/.local/bin/lock
   polybar:
     path: /home/sean/.config/polybar/config
   polybar-launch:
     path: /home/sean/.config/polybar/launch.sh
+  xres:
+    path: /home/sean/.Xresources

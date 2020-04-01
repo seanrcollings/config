@@ -1,0 +1,29 @@
+#!/home/sean/.env/arc_env/bin/python
+import random
+import os
+from arc import CLI
+
+cli = CLI()
+
+messages = [
+    "Good luck out there!", "Have a nice day!", "Be the best you can be!",
+    "Try your hardest!", "You can do great things!"
+]
+
+
+@cli.script("anon", options=["message"], flags=["--sleep"])
+def lock_anon(sleep, message=None):
+    if not message:
+        message = random.choice(messages)
+
+    flag = "-s" if sleep else "-l"
+
+    os.system(f"betterlockscreen {flag} dim -t '{message}'")
+
+
+@cli.script("no_args")
+def lock_no_args():
+    lock_anon(sleep=False)
+
+
+cli()

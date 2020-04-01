@@ -23,7 +23,8 @@ background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #ffb52a
+;primary = #ffb52a
+primary = #3585BC
 secondary = #e60053
 alert = #bd2c40
 
@@ -52,11 +53,12 @@ module-margin-right = 2
 
 font-0 = "fixed:pixelsize=15;1"
 font-1 = "Unifont:size=16:antialias=false;1"
-font-2 = "Wuncon Siji:pixelsize=25:size=22;1"
+font-2 = "Siji:pixelsize=25:size=22;1"
 font-3 = NimbusSans:size=10;4
 font-4 = FontAwesome5Free:style=Solid:size=13;4
 font-5 = FontAwesome5Free:style=Regular:size=13;4
-font-6 = FontAwesome5Brands:style=Regular:size=13;4
+font-6 = FontAwesome5Brands:style=Regular:size=15;4
+font-7 = "SauceCodeProNerdFontMono:size=22;1"
 
 modules-left = i3
 ;modules-center = mpd
@@ -98,22 +100,39 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
+ws-icon-0 = Browser;
+ws-icon-1 = Programming;
+ws-icon-2 = Terminal;
+ws-icon-3 = Chat;
+
+ws-icon-4 = 1;1
+ws-icon-5 = 2;2
+ws-icon-6 = 3;3
+ws-icon-7 = 4;4
+ws-icon-8 = 5;5
+ws-icon-9 = 6;6
+ws-icon-10 = 7;7
+ws-icon-11 = 8;8
+ws-icon-12 = 9;9
+ws-icon-13 = 10;10
+
+
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %icon% %name%
+label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 4
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %name%
+label-unfocused = %icon%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %icon% %name%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
@@ -310,8 +329,8 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
-label-open-foreground = ${colors.secondary}
+label-open = 
+label-open-foreground = #ffffff
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
@@ -325,10 +344,10 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 

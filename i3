@@ -77,7 +77,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -100,10 +100,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-set $wsb ""
-set $wsp ""
-set $wst ""
-set $wsc ""
+set $wsb "Browser"
+set $wsp "Programming"
+set $wst "Terminal"
+set $wsc "Chat"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -177,10 +177,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # lock the screen
-bindsym Mod1+l exec lock
+bindsym Control+Mod1+l exec lock
 
 # put system to sleep
-bindsym Mod1+Shift+s exec lock && echo mem > /sys/power/state
+bindsym Control+Mod1+s exec lock --sleep
 
 ################# OPEN APPLICATIONS #################
 
@@ -197,14 +197,7 @@ bindsym Ctrl+Mod1+v exec com.github.davidmhewitt.clipped
 # Provides search for all available commands on the PATH
 bindsym $mod+d exec rofi -show run -font "Source Code Pro 28" -separator-style none
 
-# Provides search for all .desktop applications
-bindsym $mod+F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
-
-# Open Ulauncher
-#bindsym $mod+d exec --no-startup-id ulauncher
-
 #####################################################
-
 
 # Launch Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

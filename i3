@@ -30,7 +30,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -75,6 +75,9 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# Move floating windows
+floating_modifier Mod1
 
 # change focus between tiling / floating windows
 #bindsym $mod+space focus mode_toggle
@@ -212,12 +215,20 @@ exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 #################### I3 GAPS ###################
 ################################################
 
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 3
 gaps inner 10
-gaps outer 12
-smart_gaps on
+gaps outer 10
+
 hide_edge_borders smart_no_gaps
-floating_modifier Mod1
 
 # Sets wallpaper
 exec_always --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/zelda.jpg
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #5f676a   #5f676a
+client.focused_inactive #333333 #5f676a #ffffff #222222   #222222
+client.unfocused        #333333 #222222 #888888 #222222   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff

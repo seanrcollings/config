@@ -1,3 +1,5 @@
+Xft.dpi: 192
+
 ! === rofi ===
 
 rofi.modi:                           ssh,window,drun,run

@@ -1,6 +1,6 @@
 set $mod Mod4
 
-# test
+exec_always --no-startup-id xrdb -merge ~/.Xresources
 # Font for window titles.
 #font pango:monospace 100
 font pango:DejaVu Sans Mono for Powerline 20
@@ -77,7 +77,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-#bindsym $mod+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -100,10 +100,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-set $wsb "Browser"
-set $wsp "Programming"
-set $wst "Terminal"
-set $wsc "Chat"
+set $wsb ""
+set $wsp ""
+set $wst ""
+set $wsc ""
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -177,10 +177,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # lock the screen
-bindsym Control+Mod1+l exec lock
+bindsym Mod1+l exec lock
 
 # put system to sleep
-bindsym Control+Mod1+s exec lock --sleep
+bindsym Ctrl+Mod1+s exec lock --sleep
+
+# lock
+bindsym  Ctrl+Mod1+l exec lock
 
 ################# OPEN APPLICATIONS #################
 
@@ -197,7 +200,14 @@ bindsym Ctrl+Mod1+v exec com.github.davidmhewitt.clipped
 # Provides search for all available commands on the PATH
 bindsym $mod+d exec rofi -show run -font "Source Code Pro 28" -separator-style none
 
+# Provides search for all .desktop applications
+bindsym $mod+F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
+
+# Open Ulauncher
+#bindsym $mod+d exec --no-startup-id ulauncher
+
 #####################################################
+
 
 # Launch Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -214,10 +224,10 @@ exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 
 for_window [class=".*"] border pixel 2
 gaps inner 10
-gaps outer 12
+gaps outer 0
 smart_gaps on
 hide_edge_borders smart_no_gaps
 floating_modifier Mod1
 
 # Sets wallpaper
-exec_always --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/zelda.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/sunset.png

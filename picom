@@ -109,7 +109,6 @@ shadow-ignore-shaped = false;
 #frame-opacity = 1;
 #inactive-opacity-override = false;
 
-#opacity-rule = [ "95:class_g = 'Gnome-terminal'" ];
 opacity-rule = ["95:class_g = 'Termite'"];
 
 

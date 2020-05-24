@@ -1,6 +1,5 @@
 set $mod Mod4
 
-# test
 # Font for window titles.
 #font pango:monospace 100
 font pango:DejaVu Sans Mono for Powerline 20
@@ -14,6 +13,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Starts Network Manager
 exec --no-startup-id nm-applet
+
+# Sets framerate for primary monitor
+exec --no-startup-id xrandr --output DP-2 --mode 2560x1440 --rate 143.86 
 
 ################################################
 ################# KEY BINDINGS #################
@@ -87,6 +89,10 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+
+# Screen Shots
+bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
+bindsym Control+Print exec gnome-screenshot -i
 
 ################# WORKSPACES #################
 
@@ -218,6 +224,7 @@ exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 for_window [class=".*"] border pixel 3
 gaps inner 10
 gaps outer 10
+smart_gaps on
 
 hide_edge_borders smart_no_gaps
 

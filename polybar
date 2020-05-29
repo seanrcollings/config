@@ -229,7 +229,7 @@ label-close = 
 
 menu-0-0 = "Terminate WM   "
 menu-0-0-foreground = #fba922
-menu-0-0-exec = bspc quit -1
+menu-0-0-exec = i3 quit 
 menu-0-1 = "Reboot   "
 menu-0-1-foreground = #fba922
 menu-0-1-exec = menu_open-1
@@ -242,11 +242,11 @@ menu-1-0-foreground = #fba922
 menu-1-0-exec = menu_open-0
 menu-1-1 = Reboot
 menu-1-1-foreground = #fba922
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = reboot
 
 menu-2-0 = Power off
 menu-2-0-foreground = #fba922
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec =  poweroff
 menu-2-1 = Cancel
 menu-2-1-foreground = #fba922
 menu-2-1-exec = menu_open-0

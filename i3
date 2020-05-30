@@ -209,10 +209,12 @@ bindsym $mod+F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
 
 
 # Launch Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Set screen layout
-exec_always --no-startup-id ~/.screenlayout/default.sh
+#exec_always --no-startup-id ~/.screenlayout/default.sh
+
+exec --no-startup-id determine-setup
 
 # Starts the compositor
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf

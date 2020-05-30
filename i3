@@ -1,21 +1,77 @@
+################################################
+#################### INIT ######################
+################################################
 set $mod Mod4
 
 # Font for window titles.
-#font pango:monospace 100
 font pango:DejaVu Sans Mono for Powerline 20
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Starts Network Manager
 exec --no-startup-id nm-applet
 
-# Sets framerate for primary monitor
-exec --no-startup-id xrandr --output DP-2 --mode 2560x1440 --rate 143.86 
+# Launch Polybar 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Starts the compositor
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+
+# Sets wallpaper
+exec_always --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/zelda.jpg
+
+################################################
+################# APPLICATIONS #################
+################################################
+
+# Start a terminal
+bindsym $mod+Return exec termite
+
+# Open Chrome
+bindsym Mod1+c exec google-chrome-stable
+
+# Oopen VS Code
+bindsym Mod1+v exec code
+
+# Open clipped
+# Find another clipboard manager
+bindsym Ctrl+Mod1+v exec com.github.davidmhewitt.clipped
+
+# Open rofi
+bindsym $mod+d exec rofi -show run -font "Source Code Pro 28" -separator-style none
+
+# Screen Shots
+bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
+bindsym Control+Print exec gnome-screenshot -i
+
+# lock the screen
+bindsym Control+Mod1+l exec lock
+
+# put system to sleep
+bindsym Control+Mod1+s exec lock --sleep
+
+################################################
+################## APPEARANCE ##################
+################################################
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #5f676a   #5f676a
+client.focused_inactive #333333 #5f676a #ffffff #222222   #222222
+client.unfocused        #333333 #222222 #888888 #222222   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+
+################################################
+#################### I3 GAPS ###################
+################################################
+
+for_window [class=".*"] border pixel 3
+gaps inner 10
+gaps outer 10
+smart_gaps on
+
+hide_edge_borders smart_no_gaps
 
 ################################################
 ################# KEY BINDINGS #################
@@ -30,9 +86,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Use Mouse+$mod to drag floating windows to their wanted position`
 floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -89,10 +142,6 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
-
-# Screen Shots
-bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
-bindsym Control+Print exec gnome-screenshot -i
 
 ################# WORKSPACES #################
 
@@ -151,10 +200,10 @@ bindsym $mod+Shift+t move container to workspace $wst
 # Moves entire workspace to the next monitor
 bindsym $mod+m move workspace to output right
 
-# reload the configuration file
-# bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -184,58 +233,3 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-# lock the screen
-bindsym Control+Mod1+l exec lock
-
-# put system to sleep
-bindsym Control+Mod1+s exec lock --sleep
-
-################# OPEN APPLICATIONS #################
-
-# Open Chrome
-bindsym Mod1+c exec google-chrome-stable
-
-# open VS Code
-bindsym Mod1+v exec code
-
-# Open clipped
-bindsym Ctrl+Mod1+v exec com.github.davidmhewitt.clipped
-
-# open rofi
-# Provides search for all available commands on the PATH
-bindsym $mod+d exec rofi -show run -font "Source Code Pro 28" -separator-style none
-
-#####################################################
-
-# Launch Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-# Set screen layout
-exec_always --no-startup-id ~/.screenlayout/default.sh
-
-# Starts the compositor
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
-
-################################################
-#################### I3 GAPS ###################
-################################################
-
-for_window [class=".*"] border pixel 3
-gaps inner 10
-gaps outer 10
-smart_gaps on
-
-hide_edge_borders smart_no_gaps
-
-# Sets wallpaper
-exec_always --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/zelda.jpg
-
-# class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #5f676a   #5f676a
-client.focused_inactive #333333 #5f676a #ffffff #222222   #222222
-client.unfocused        #333333 #222222 #888888 #222222   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-client.background       #ffffff

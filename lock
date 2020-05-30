@@ -5,7 +5,7 @@ from arc import CLI
 
 cli = CLI()
 
-messages = [
+MESSAGES = [
     "Good luck out there!", "Have a nice day!", "Be the best you can be!",
     "Try your hardest!", "You can do great things!"
 ]
@@ -14,7 +14,7 @@ messages = [
 @cli.script("anon", options=["message"], flags=["--sleep"])
 def lock_anon(sleep, message=None):
     if not message:
-        message = random.choice(messages)
+        message = random.choice(MESSAGES)
 
     flag = "-s" if sleep else "-l"
 

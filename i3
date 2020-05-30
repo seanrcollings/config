@@ -1,6 +1,5 @@
 set $mod Mod4
 
-exec_always --no-startup-id xrdb -merge ~/.Xresources
 # Font for window titles.
 #font pango:monospace 100
 font pango:DejaVu Sans Mono for Powerline 20
@@ -30,7 +29,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -100,10 +99,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-set $wsb ""
-set $wsp ""
-set $wst ""
-set $wsc ""
+set $wsb "Browser"
+set $wsp "Programming"
+set $wst "Terminal"
+set $wsc "Chat"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -230,4 +229,4 @@ hide_edge_borders smart_no_gaps
 floating_modifier Mod1
 
 # Sets wallpaper
-exec_always --no-startup-id feh --bg-fill ~/Pictures/sunset.png
+exec_always --no-startup-id feh --bg-fill ~/Pictures/zelda.jpg
